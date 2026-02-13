@@ -1,0 +1,75 @@
+# @package _global_
+# 4 x H100 GPUs
+
+# When the (dataset, experiment) pair aligns with the file name of this yaml, 
+# the values here will override individual yamls files for dataset, algorithm and experiment.
+# useful for dataset-specific overrides
+
+# === TRAINING OVERRIDES FOR HABITAT FINE-TUNE ===
+dataset:
+  subdataset_size: 43648
+  num_eval_videos: 128
+  maximize_training_data: true
+
+  # gentler video augments for indoor nav trajectories
+  augmentation:
+    frame_skip_increase: 0
+    horizontal_flip_prob: 0.5
+    reverse_prob: 0.0
+    back_and_forth_prob: 0.0
+
+algorithm:
+  weight_decay: 0.01
+  lr_scheduler:
+    name: constant_with_warmup
+    num_warmup_steps: 3000
+    num_training_steps: 43640
+  diffusion:
+    loss_weighting:
+      strategy: sigmoid
+      sigmoid_bias: -1.0
+    training_schedule:
+      name: cosine
+      shift: 0.125
+    beta_schedule: cosine_simple_diffusion
+    schedule_fn_kwargs:
+      shifted: 0.125
+      interpolated: False
+  logging:
+    max_num_videos: 128
+    metrics: [fvd, is, fid, lpips, mse, ssim, psnr]
+  backbone:
+    channels: [128, 256, 576, 1152]
+    num_updown_blocks: [3, 3, 6]
+    num_mid_blocks: 20
+    num_heads: 9
+    use_checkpointing: [false, false, false, true]
+
+experiment:
+  reload_dataloaders_every_n_epochs: 1
+  training:
+    lr: 1e-5
+    batch_size: 4
+    max_epochs: 48
+    checkpoint: null
+    resume: true
+    resume_from_checkpoint: /scratch/tshu2/zwen19/diffusion-forcing-transformer/outputs/2025-11-17/11-50-58/checkpoints/epoch=39-step=54560.ckpt
+    compile: false
+    checkpointing:
+      every_n_epochs: 1
+      every_n_train_steps: null
+      save_weights_only: false
+      save_top_k: 1
+      monitor: validation/loss
+      mode: min
+      save_last: true
+    optim:
+      accumulate_grad_batches: 2
+  validation:
+    batch_size: 4
+    data:
+      num_workers: 8
+  test:
+    batch_size: 4
+    data:
+      num_workers: 8

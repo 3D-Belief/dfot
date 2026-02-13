@@ -18,8 +18,8 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 from omegaconf.omegaconf import open_dict
 
-from utils.print_utils import cyan
-from utils.ckpt_utils import (
+from dfot_utils.print_utils import cyan
+from dfot_utils.ckpt_utils import (
     download_checkpoint,
     download_pretrained,
     is_hf_path,
@@ -31,15 +31,15 @@ from utils.ckpt_utils import (
     generate_unexisting_run_id,
     wandb_to_local_path,
 )
-from utils.cluster_utils import submit_slurm_job
-from utils.distributed_utils import rank_zero_print, is_rank_zero
-from utils.hydra_utils import unwrap_shortcuts
+from dfot_utils.cluster_utils import submit_slurm_job
+from dfot_utils.distributed_utils import rank_zero_print, is_rank_zero
+from dfot_utils.hydra_utils import unwrap_shortcuts
 
 
 def run_local(cfg: DictConfig):
     # delay some imports in case they are not needed in non-local envs for submission
     from experiments import build_experiment
-    from utils.wandb_utils import OfflineWandbLogger, SpaceEfficientWandbLogger
+    from dfot_utils.wandb_utils import OfflineWandbLogger, SpaceEfficientWandbLogger
 
     os.environ["WANDB__SERVICE_WAIT"] = "300"
 

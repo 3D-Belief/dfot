@@ -8,7 +8,7 @@ from functools import partial
 import torch
 import torch.nn as nn
 from einops import rearrange, repeat
-from utils.ckpt_utils import (
+from dfot_utils.ckpt_utils import (
     is_wandb_run_path,
     is_hf_path,
     wandb_to_local_path,

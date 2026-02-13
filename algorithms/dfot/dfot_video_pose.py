@@ -3,7 +3,7 @@ import torch
 from torch import Tensor
 from omegaconf import DictConfig
 from einops import rearrange
-from utils.geometry_utils import CameraPose
+from dfot_utils.geometry_utils import CameraPose
 from .dfot_video import DFoTVideo
 
 

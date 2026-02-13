@@ -1,6 +1,6 @@
 from typing import Optional
 from omegaconf import DictConfig
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 from torchvision.datasets.utils import (
     download_and_extract_archive,
 )

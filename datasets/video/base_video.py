@@ -9,8 +9,8 @@ import torch.nn.functional as F
 from torchvision.datasets.video_utils import _VideoTimestampsDataset, _collate_fn
 from tqdm import tqdm
 from einops import rearrange
-from utils.distributed_utils import rank_zero_print
-from utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print
+from dfot_utils.print_utils import cyan
 from datasets.video.utils import read_video, VideoTransform
 
 SPLIT = Literal["training", "validation", "test"]

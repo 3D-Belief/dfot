@@ -16,8 +16,36 @@ from lightning import Trainer, LightningModule
 from lightning.pytorch import Callback
 from lightning.pytorch.utilities.exceptions import MisconfigurationException
 from lightning.pytorch.trainer.states import TrainerFn
-from utils.print_utils import cyan
-from utils.distributed_utils import rank_zero_print
+from dfot_utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print
+
+
+import torch
+from pathlib import Path
+
+def load_weights_only(module: torch.nn.Module, ckpt_path: str, strict: bool = False):
+    obj = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+
+    # prefer training weights; fall back to EMA; else raw dict
+    for cand in ("state_dict", "model", "model_state", "network",
+                 "model_ema", "ema_state_dict", "ema", "state_dict_ema"):
+        if isinstance(obj, dict) and cand in obj:
+            sd = obj[cand]
+            break
+    else:
+        sd = obj
+
+    # strip common prefixes
+    cleaned = {}
+    for k, v in sd.items():
+        if k.startswith("model."):   k = k[6:]
+        if k.startswith("module."):  k = k[7:]
+        cleaned[k] = v
+
+    missing, unexpected = module.load_state_dict(cleaned, strict=strict)
+    print(f"[finetune] loaded {Path(ckpt_path).name}  missing={len(missing)} unexpected={len(unexpected)}")
+    if missing:   print("[finetune] missing keys (ok for fine-tune):", missing)
+    if unexpected:print("[finetune] unexpected keys (usually heads):", unexpected)
 
 
 class EMA(Callback):

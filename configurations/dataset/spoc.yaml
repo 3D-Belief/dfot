@@ -1,0 +1,31 @@
+# IMPORTANT: Prefer editing the dataset-dependent config in configurations/dataset_experiment/*
+
+defaults:
+  - base_video
+
+name: spoc
+spoc_dir: /scratch/tshu2/yyin34/projects/3d_belief/DFM/data/spoc_video_only
+save_dir: /scratch/tshu2/zwen19/diffusion-forcing-transformer/data/spoc  # cache for metadata & pose tensors
+metadata_dir: ${save_dir}/metadata
+
+external_cond_dim: 16
+max_frames: 8
+frame_skip: 4
+context_length: 4
+resolution: 256
+
+data_mean: [[[0.332133024930954]], [[0.2922039031982422]], [[0.23322603106498718]]]  # TODO: put in SPOC's values here
+data_std:  [[[0.1583518236875534]], [[0.14886392652988434]], [[0.1315421462059021]]]  # TODO: put in SPOC's values here
+
+filter_min_len: null
+num_eval_videos: 1024
+subdataset_size: null
+maximize_training_data: False
+anchor_to_first: False
+
+augmentation:
+  frame_skip_increase: 0
+  horizontal_flip_prob: 0.5
+  reverse_prob: 0
+  back_and_forth_prob: 0
+

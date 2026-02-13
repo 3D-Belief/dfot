@@ -1,7 +1,7 @@
 import torch
 from torch import nn
-from utils.torch_utils import freeze_model
-from utils.huggingface_utils import download_from_hf
+from dfot_utils.torch_utils import freeze_model
+from dfot_utils.huggingface_utils import download_from_hf
 
 
 def load_pretrained_i3d() -> torch.jit.ScriptModule:

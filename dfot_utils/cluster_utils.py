@@ -7,7 +7,7 @@ from omegaconf import DictConfig, OmegaConf
 from datetime import datetime
 from pathlib import Path
 
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 
 # This is set below.
 REPO_DIR = None

@@ -10,8 +10,8 @@ from algorithms.common.metrics.video import (
     VideoMetric,
     SharedVideoMetricModelRegistry,
 )
-from utils.distributed_utils import is_rank_zero, broadcast_from_zero
-from utils.logging_utils import log_video
+from dfot_utils.distributed_utils import is_rank_zero, broadcast_from_zero
+from dfot_utils.logging_utils import log_video
 from ..common.losses import LPIPSWithDiscriminator3D, warmup
 from .model import VideoVAE
 

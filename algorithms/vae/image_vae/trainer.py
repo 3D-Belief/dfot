@@ -12,9 +12,9 @@ import lightning.pytorch as pl
 from einops import rearrange
 from diffusers import AutoencoderKL as DiffuserImageVAE
 from torchmetrics.image import FrechetInceptionDistance
-from utils.logging_utils import log_video
-from utils.logging_utils import get_validation_metrics_for_videos
-from utils.ckpt_utils import (
+from dfot_utils.logging_utils import log_video
+from dfot_utils.logging_utils import get_validation_metrics_for_videos
+from dfot_utils.ckpt_utils import (
     is_wandb_run_path,
     is_hf_path,
     wandb_to_local_path,

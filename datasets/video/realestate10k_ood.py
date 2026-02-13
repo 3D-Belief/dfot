@@ -3,7 +3,7 @@ from omegaconf import DictConfig
 from einops import einsum
 import torch
 import numpy as np
-from utils.geometry_utils import CameraPose
+from dfot_utils.geometry_utils import CameraPose
 from .base_video import SPLIT
 from .realestate10k import RealEstate10KAdvancedVideoDataset
 

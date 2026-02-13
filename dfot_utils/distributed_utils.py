@@ -9,7 +9,7 @@ from typing import Callable
 import torch
 import torch.distributed as dist
 from lightning.pytorch.utilities.rank_zero import rank_zero_only
-from utils.print_utils import print_once
+from dfot_utils.print_utils import print_once
 
 is_rank_zero = rank_zero_only.rank == 0
 

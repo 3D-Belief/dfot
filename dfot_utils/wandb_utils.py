@@ -32,7 +32,7 @@ from lightning.pytorch.utilities.rank_zero import rank_zero_only
 from lightning.fabric.utilities.types import _PATH
 import wandb
 from wandb.apis.public.runs import Run
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 
 
 if TYPE_CHECKING:

@@ -2,8 +2,8 @@ from typing import Dict, List
 from torch import nn, Tensor
 from torchmetrics.image.lpip import NoTrainLpips
 from torchmetrics.image.fid import NoTrainInceptionV3
-from utils.torch_utils import freeze_model
-from utils.print_utils import suppress_warnings
+from dfot_utils.torch_utils import freeze_model
+from dfot_utils.print_utils import suppress_warnings
 from .models import I3D, MotionExtractor, CLIP, DINO, LAION, MUSIQ, RAFT, AMT_S
 from .types import VideoMetricModelType, VideoMetricType
 

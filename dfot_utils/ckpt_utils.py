@@ -11,7 +11,7 @@ import random
 from pathlib import Path
 from omegaconf import DictConfig
 import wandb
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 from .huggingface_utils import download_from_hf
 
 

@@ -1,6 +1,6 @@
 import torch
-from utils.distributed_utils import rank_zero_print
-from utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print
+from dfot_utils.print_utils import cyan
 from .base_data_module import BaseDataModule
 
 

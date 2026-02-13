@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from einops import repeat, rearrange, reduce, einsum
 import wandb
 import uuid
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 
 
 ALL = "all"

@@ -15,11 +15,11 @@ from tqdm import tqdm
 from algorithms.common.base_pytorch_algo import BasePytorchAlgo
 from algorithms.common.metrics.video import VideoMetric, SharedVideoMetricModelRegistry
 from algorithms.vae import ImageVAE, VideoVAE
-from utils.print_utils import cyan
-from utils.distributed_utils import rank_zero_print, is_rank_zero
-from utils.torch_utils import bernoulli_tensor
-from utils.logging_utils import log_video
-from utils.torch_utils import freeze_model
+from dfot_utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print, is_rank_zero
+from dfot_utils.torch_utils import bernoulli_tensor
+from dfot_utils.logging_utils import log_video
+from dfot_utils.torch_utils import freeze_model
 from .diffusion import (
     DiscreteDiffusion,
     ContinuousDiffusion,
@@ -342,8 +342,16 @@ class DFoTVideo(BasePytorchAlgo):
             self.log_dict(norms)
 
     # ---------------------------------------------------------------------
-    # Validation & Test
+    # Validation & Test & Inference
     # ---------------------------------------------------------------------
+
+    @torch.no_grad()
+    def inference(self, batch) -> Dict[str, Tensor]:
+        """Inference step"""
+        # Sample all videos (based on the specified tasks)
+        batch = (batch['videos'], batch.get('conds', None), None, None)
+        all_videos = self._sample_all_videos(batch, 0, "inference")
+        return all_videos['prediction']
 
     @torch.no_grad()
     def validation_step(self, batch, batch_idx, namespace="validation") -> STEP_OUTPUT:

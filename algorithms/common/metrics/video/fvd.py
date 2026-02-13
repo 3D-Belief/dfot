@@ -1,7 +1,7 @@
 from typing import Any
 from torch import Tensor
-from utils.print_utils import cyan
-from utils.distributed_utils import rank_zero_print_once
+from dfot_utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print_once
 from .base_fid import BaseFrechetDistance
 
 

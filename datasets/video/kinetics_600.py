@@ -23,7 +23,7 @@ from torchvision.datasets.utils import (
 )
 from tqdm import tqdm
 import numpy as np
-from utils.print_utils import cyan
+from dfot_utils.print_utils import cyan
 from .base_video import (
     BaseVideoDataset,
     BaseSimpleVideoDataset,

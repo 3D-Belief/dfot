@@ -16,8 +16,8 @@ from torchvision.datasets.utils import (
 )
 import numpy as np
 from pytubefix import YouTube
-from utils.print_utils import cyan
-from utils.storage_utils import safe_torch_save
+from dfot_utils.print_utils import cyan
+from dfot_utils.storage_utils import safe_torch_save
 from .base_video import (
     BaseVideoDataset,
     BaseSimpleVideoDataset,

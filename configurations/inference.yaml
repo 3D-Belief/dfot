@@ -17,4 +17,9 @@ wandb:
 resume: null # wandb run id to resume logging and loading checkpoint from
 load: null # wanmdb run id containing checkpoint or a path to a checkpoint file 
 
+algorithm:
+  context_frames: 1
+  diffusion:
+    sampling_timesteps: 50
+
 ckpt_path: /scratch/tshu2/zwen19/diffusion-forcing-transformer/dfot_habitat_highest.ckpt

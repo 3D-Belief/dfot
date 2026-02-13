@@ -10,8 +10,8 @@ import numpy as np
 from PIL import Image
 import wandb
 import einops
-from utils.print_utils import cyan
-from utils.distributed_utils import rank_zero_print
+from dfot_utils.print_utils import cyan
+from dfot_utils.distributed_utils import rank_zero_print
 
 
 class BasePytorchAlgo(pl.LightningModule, ABC):

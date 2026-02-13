@@ -3,7 +3,7 @@ import torch
 from torch import nn, Tensor
 from easydict import EasyDict
 from algorithms.common.metrics.video.utils import videos_as_images
-from utils.huggingface_utils import download_from_hf
+from dfot_utils.huggingface_utils import download_from_hf
 from .raft import RAFT as _RAFT
 from .utils import InputPadder
 

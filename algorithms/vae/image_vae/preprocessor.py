@@ -4,8 +4,8 @@ import torch
 from einops import rearrange
 from lightning.pytorch.utilities.types import STEP_OUTPUT
 from algorithms.common.base_pytorch_algo import BasePytorchAlgo
-from utils.storage_utils import safe_torch_save
-from utils.logging_utils import log_video
+from dfot_utils.storage_utils import safe_torch_save
+from dfot_utils.logging_utils import log_video
 from ..common.distribution import DiagonalGaussianDistribution
 from .trainer import ImageVAE
 
