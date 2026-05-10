@@ -8,7 +8,6 @@ import lightning.pytorch as pl
 import torch
 import numpy as np
 from PIL import Image
-import wandb
 import einops
 from dfot_utils.print_utils import cyan
 from dfot_utils.distributed_utils import rank_zero_print
@@ -157,6 +156,8 @@ class BasePytorchAlgo(pl.LightningModule, ABC):
         if video.dtype != np.uint8:
             video = np.clip(video, a_min=0, a_max=1) * 255
             video = video.astype(np.uint8)
+
+        import wandb
 
         self.logger.experiment.log(
             {
