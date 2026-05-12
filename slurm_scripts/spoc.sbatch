@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=dfot_spoc_H100_whole_dataset
 #SBATCH --time=72:00:00
-#SBATCH --output=/scratch/tshu2/zwen19/diffusion-forcing-transformer/logs/slurm_%j.out
+#SBATCH --output=logs/slurm_%j.out
 #SBATCH --nodes=1
 #SBATCH --partition=nvl
 #SBATCH --ntasks-per-node=1          # one launcher per node
@@ -13,15 +13,16 @@ source ~/.bashrc         # if conda needs bashrc
 conda activate dfot
 nvidia-smi || true
 
-# <<< W&B to scratch + no ckpt uploads >>>
-export XDG_DATA_HOME=/scratch/tshu2/zwen19/.local/share
-export XDG_CACHE_HOME=/scratch/tshu2/zwen19/.cache
-export WANDB_DIR=/scratch/tshu2/zwen19/wandb
-export WANDB_CACHE_DIR=/scratch/tshu2/zwen19/wandb-cache
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CACHE_ROOT="${CACHE_ROOT:-${REPO_ROOT}/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-${CACHE_ROOT}/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${CACHE_ROOT}/xdg}"
+export WANDB_DIR="${WANDB_DIR:-${CACHE_ROOT}/wandb}"
+export WANDB_CACHE_DIR="${WANDB_CACHE_DIR:-${CACHE_ROOT}/wandb-cache}"
 export WANDB_IGNORE_GLOBS="**/*.ckpt"
 
 # ---- launch (single node, no master addr/port needed) ----
-cd /scratch/tshu2/zwen19/diffusion-forcing-transformer/ || exit 1
+cd "${REPO_ROOT}" || exit 1
 
 # python -m main +name=dfot_habitat_whole_dataset_phase3 dataset=habitat algorithm=dfot_video_pose experiment=video_generation @diffusion/continuous
 python -m main +name=dfot_spoc dataset=spoc algorithm=dfot_video_pose experiment=video_generation @diffusion/continuous

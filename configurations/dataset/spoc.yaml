@@ -4,8 +4,8 @@ defaults:
   - base_video
 
 name: spoc
-spoc_dir: /scratch/tshu2/yyin34/projects/3d_belief/DFM/data/spoc_video_only
-save_dir: /scratch/tshu2/zwen19/diffusion-forcing-transformer/data/spoc  # cache for metadata & pose tensors
+spoc_dir: data/spoc_video_only
+save_dir: data/spoc  # cache for metadata & pose tensors
 metadata_dir: ${save_dir}/metadata
 
 external_cond_dim: 16
@@ -28,4 +28,3 @@ augmentation:
   horizontal_flip_prob: 0.5
   reverse_prob: 0
   back_and_forth_prob: 0
-

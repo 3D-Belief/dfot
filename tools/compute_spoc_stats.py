@@ -333,8 +333,8 @@ def print_dataloader_summary(
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--spoc_dir", type=str, default="/scratch/tshu2/yyin34/projects/3d_belief/DFM/data/spoc_video_only")
-    p.add_argument("--save_dir", type=str, default="data/spoc")  # ABS recommended
+    p.add_argument("--spoc_dir", type=str, default="data/spoc_video_only")
+    p.add_argument("--save_dir", type=str, default="data/spoc")
     p.add_argument("--resolution", type=int, default=256)
     p.add_argument("--split", type=str, default="training", choices=["training", "validation", "test", "unit"])
     p.add_argument("--max_frames", type=int, default=8)

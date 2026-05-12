@@ -53,7 +53,7 @@ experiment:
     max_epochs: 48
     checkpoint: null
     resume: true
-    resume_from_checkpoint: /scratch/tshu2/zwen19/diffusion-forcing-transformer/outputs/2025-11-17/11-50-58/checkpoints/epoch=39-step=54560.ckpt
+    resume_from_checkpoint: checkpoints/dfot_habitat.ckpt
     compile: false
     checkpointing:
       every_n_epochs: 1

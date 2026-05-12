@@ -56,8 +56,7 @@ experiment:
     max_epochs: 48
     checkpoint: null
     resume: true
-    # TODO: change this to your checkpoint path
-    resume_from_checkpoint: /scratch/tshu2/zwen19/diffusion-forcing-transformer/huggingface/models--kiwhansong--DFoT/snapshots/0959defb4c4fe010f84791d732cc978ad7d49fef/full_models/DFoT_RE10K.ckpt
+    resume_from_checkpoint: checkpoints/DFoT_RE10K.ckpt
     compile: false
     checkpointing:
       every_n_epochs: 1

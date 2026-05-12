@@ -4,8 +4,8 @@ defaults:
   - base_video
 
 name: habitat
-habitat_dir: /scratch/tshu2/yyin34/projects/3d_belief/partnr-planner/data/trajectories/habelief
-save_dir: /scratch/tshu2/zwen19/diffusion-forcing-transformer/data/habitat
+habitat_dir: data/habitat
+save_dir: data/habitat_cache
 metadata_dir: ${save_dir}/metadata
 
 external_cond_dim: 16
@@ -28,4 +28,3 @@ augmentation:
   horizontal_flip_prob: 0.5
   reverse_prob: 0
   back_and_forth_prob: 0
-

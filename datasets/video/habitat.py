@@ -171,8 +171,7 @@ class HabitatBaseVideoDataset(BaseVideoDataset):
         split_alias = self._alias_split(split)             # 'train' or 'test'
         split_folder = split_alias                         # on-disk name
 
-        habi_dir = Path("/scratch/tshu2/yyin34/projects/3d_belief/partnr-planner/data/trajectories/habelief")
-        root = (habi_dir / split_folder).resolve()
+        root = (self.habitat_dir / split_folder).resolve()
         if not root.exists():
             raise FileNotFoundError(f"Missing split folder: {root}")
 

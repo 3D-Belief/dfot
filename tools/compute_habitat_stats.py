@@ -220,8 +220,8 @@ def compute_mean_std_streaming(
 # ------------------------------ CLI & main ------------------------------
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--habitat_dir", type=str, default="/scratch/tshu2/yyin34/projects/3d_belief/partnr-planner/data/trajectories/habelief")
-    p.add_argument("--save_dir", type=str, default="/scratch/tshu2/zwen19/diffusion-forcing-transformer/data/habitat")  # ABS path recommended
+    p.add_argument("--habitat_dir", type=str, default="data/habitat")
+    p.add_argument("--save_dir", type=str, default="data/habitat_cache")
     p.add_argument("--resolution", type=int, default=256)
     p.add_argument("--split", type=str, default="training", choices=["training", "validation", "test"])
     p.add_argument("--max_frames", type=int, default=8)

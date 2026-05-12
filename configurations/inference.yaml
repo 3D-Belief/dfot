@@ -9,8 +9,7 @@ defaults:
 debug: false # global debug flag will be passed into configuration of experiment, dataset and algorithm
 
 wandb:
-  entity: yifanyin-johns-hopkins-university # wandb account name / organization name [fixme]
-  # entity: zwen19-johns-hopkins-university # wandb account name / organization name [fixme]
+  entity: null # wandb account name / organization name
   project: dfot # wandb project name; if not provided, defaults to root folder name [fixme]
   mode: offline # set wandb logging to online, offline or dryrun
 
@@ -22,4 +21,4 @@ algorithm:
   diffusion:
     sampling_timesteps: 50
 
-ckpt_path: /scratch/tshu2/zwen19/diffusion-forcing-transformer/dfot_habitat_highest.ckpt
+ckpt_path: checkpoints/dfot_habitat_highest.ckpt
